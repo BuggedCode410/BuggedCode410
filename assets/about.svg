@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 260" width="100%" height="260">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1b27" />
+      <stop offset="100%" stop-color="#16161e" />
+    </linearGradient>
+    <linearGradient id="topBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7aa2f7" />
+      <stop offset="50%" stop-color="#bb9af7" />
+      <stop offset="100%" stop-color="#7dcfff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Panel: Terminal Card -->
+  <rect x="4" y="4" width="600" height="252" rx="12" fill="url(#cardBg)" stroke="#2f3549" stroke-width="1.5" />
+  <rect x="4" y="4" width="600" height="36" rx="12" fill="#1f2335" />
+  <rect x="4" y="28" width="600" height="12" fill="#1f2335" />
+  <line x1="4" y1="40" x2="604" y2="40" stroke="#2f3549" stroke-width="1" />
+
+  <!-- Terminal Window Dots -->
+  <circle cx="26" cy="22" r="6" fill="#f7768e" />
+  <circle cx="46" cy="22" r="6" fill="#e0af68" />
+  <circle cx="66" cy="22" r="6" fill="#9ece6a" />
+  <text x="304" y="27" text-anchor="middle" fill="#787c99" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="12" font-weight="600">
+    harshil@bits-pilani: ~/profile
+  </text>
+
+  <!-- Terminal Content -->
+  <g font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="13.5">
+    <text x="28" y="70" fill="#7aa2f7" font-weight="700">$</text>
+    <text x="44" y="70" fill="#c0caf5" font-weight="600">cat profile.yaml</text>
+
+    <text x="28" y="102" fill="#bb9af7">education:</text>
+    <text x="145" y="102" fill="#c0caf5">B.E. at BITS Pilani (2025 - Present)</text>
+
+    <text x="28" y="132" fill="#bb9af7">current_role:</text>
+    <text x="145" y="132" fill="#9ece6a">Frontend / Shopify Intern @ NOSH Electronics</text>
+
+    <text x="28" y="162" fill="#bb9af7">communities:</text>
+    <text x="145" y="162" fill="#7dcfff">CRUX  •  DADU  •  ACM Student Chapter</text>
+
+    <text x="28" y="192" fill="#bb9af7">engineering:</text>
+    <text x="145" y="192" fill="#c0caf5">2D Game Engines, Web Apps &amp; Backend Systems</text>
+
+    <text x="28" y="226" fill="#7aa2f7" font-weight="700">$</text>
+    <text x="44" y="226" fill="#787c99">status --active</text>
+    <rect x="166" y="214" width="8" height="15" fill="#7aa2f7">
+      <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- Right Top Bento Card: Current Focus -->
+  <rect x="620" y="4" width="376" height="120" rx="12" fill="url(#cardBg)" stroke="#2f3549" stroke-width="1.5" />
+  <rect x="620" y="4" width="376" height="4" rx="2" fill="url(#topBar)" />
+
+  <circle cx="646" cy="34" r="5" fill="#9ece6a">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <text x="660" y="38" fill="#9ece6a" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" letter-spacing="1">
+    CURRENTLY BUILDING
+  </text>
+
+  <text x="640" y="68" fill="#c0caf5" font-family="'Segoe UI', -apple-system, sans-serif" font-size="15" font-weight="700">
+    NOSH One Storefront &amp; Campus Tech
+  </text>
+  <text x="640" y="92" fill="#9aa5ce" font-family="'Segoe UI', -apple-system, sans-serif" font-size="12.5">
+    Modular Shopify OS 2.0 components, interactive
+  </text>
+  <text x="640" y="110" fill="#9aa5ce" font-family="'Segoe UI', -apple-system, sans-serif" font-size="12.5">
+    game mechanics, and full-stack campus platforms.
+  </text>
+
+  <!-- Right Bottom Bento Card: Core Domains -->
+  <rect x="620" y="136" width="376" height="120" rx="12" fill="url(#cardBg)" stroke="#2f3549" stroke-width="1.5" />
+  <text x="640" y="166" fill="#7aa2f7" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" letter-spacing="1">
+    CORE FOCUS AREAS
+  </text>
+
+  <!-- Domain Pills Row 1 -->
+  <rect x="640" y="180" width="155" height="28" rx="6" fill="#1f2335" stroke="#3b4261" stroke-width="1" />
+  <text x="717" y="198" text-anchor="middle" fill="#c0caf5" font-family="'JetBrains Mono', monospace" font-size="11.5">Game Development</text>
+
+  <rect x="805" y="180" width="170" height="28" rx="6" fill="#1f2335" stroke="#3b4261" stroke-width="1" />
+  <text x="890" y="198" text-anchor="middle" fill="#c0caf5" font-family="'JetBrains Mono', monospace" font-size="11.5">Full-Stack Web</text>
+
+  <!-- Domain Pills Row 2 -->
+  <rect x="640" y="216" width="175" height="28" rx="6" fill="#1f2335" stroke="#3b4261" stroke-width="1" />
+  <text x="727" y="234" text-anchor="middle" fill="#c0caf5" font-family="'JetBrains Mono', monospace" font-size="11.5">AI &amp; Data Modeling</text>
+
+  <rect x="825" y="216" width="150" height="28" rx="6" fill="#1f2335" stroke="#3b4261" stroke-width="1" />
+  <text x="900" y="234" text-anchor="middle" fill="#c0caf5" font-family="'JetBrains Mono', monospace" font-size="11.5">Cybersecurity</text>
+</svg>

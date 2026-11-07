@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 230" width="100%" height="230">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1b27" />
+      <stop offset="100%" stop-color="#16161e" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7dcfff" />
+      <stop offset="100%" stop-color="#7aa2f7" />
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="496" height="226" rx="12" fill="url(#bg)" stroke="#2f3549" stroke-width="1.5" />
+  <rect x="2" y="2" width="496" height="4" rx="2" fill="url(#accent)" />
+
+  <!-- Header -->
+  <text x="24" y="38" fill="#7dcfff" font-family="'Segoe UI', -apple-system, sans-serif" font-size="18" font-weight="700">
+    NOSH One US Launch Storefront
+  </text>
+  <rect x="378" y="19" width="98" height="24" rx="6" fill="#1f2335" stroke="#3b4261" stroke-width="1" />
+  <text x="427" y="35" text-anchor="middle" fill="#7dcfff" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="600">
+    INTERNSHIP
+  </text>
+
+  <!-- Divider -->
+  <line x1="24" y1="54" x2="476" y2="54" stroke="#24283b" stroke-width="1" />
+
+  <!-- Highlights -->
+  <g font-family="'Segoe UI', -apple-system, sans-serif" font-size="12.5" fill="#a9b1d6">
+    <circle cx="30" cy="78" r="3" fill="#7dcfff" />
+    <text x="42" y="82"><tspan fill="#c0caf5" font-weight="600">Modular Storefront:</tspan> Architected Shopify OS 2.0 sections and</text>
+    <text x="42" y="100">JSON templates across 60+ files from responsive Figma specs.</text>
+
+    <circle cx="30" cy="122" r="3" fill="#7aa2f7" />
+    <text x="42" y="126"><tspan fill="#c0caf5" font-weight="600">Custom Elements:</tspan> Built interactive Recipes, Personalization,</text>
+    <text x="42" y="144">and Reserve components using vanilla JS and CSS design tokens.</text>
+  </g>
+
+  <!-- Tech Stack Pills -->
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#7dcfff">
+    <rect x="24" y="182" width="110" height="26" rx="6" fill="#1f2335" stroke="#2f3549" />
+    <text x="79" y="199" text-anchor="middle">Shopify OS 2.0</text>
+
+    <rect x="142" y="182" width="66" height="26" rx="6" fill="#1f2335" stroke="#2f3549" />
+    <text x="175" y="199" text-anchor="middle">Liquid</text>
+
+    <rect x="216" y="182" width="124" height="26" rx="6" fill="#1f2335" stroke="#2f3549" />
+    <text x="278" y="199" text-anchor="middle">Web Components</text>
+
+    <rect x="348" y="182" width="96" height="26" rx="6" fill="#1f2335" stroke="#2f3549" />
+    <text x="396" y="199" text-anchor="middle">CSS Tokens</text>
+  </g>
+</svg>
