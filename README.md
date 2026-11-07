@@ -52,3 +52,9 @@
     <img alt="github-contribution-grid-snake" src="https://raw.githubusercontent.com/BuggedCode410/BuggedCode410/output/github-contribution-grid-snake-dark.svg" width="100%" />
   </picture>
 </div>
+
+<img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
+
+<div align="center">
+  <a href="https://github.com/BuggedCode410?tab=repositories"><img width="100%" src="./assets/footer-arcade.svg" alt="Continue? // Insert Coin to Collaborate" /></a>
+</div>
