@@ -13,14 +13,6 @@ os.makedirs(PROJECTS_DIR, exist_ok=True)
 os.makedirs(HEADERS_DIR, exist_ok=True)
 os.makedirs(BADGES_DIR, exist_ok=True)
 
-for obsolete in [
-    os.path.join(ASSETS_DIR, "typing-bar-v2.svg"),
-    os.path.join(ASSETS_DIR, "character-sheet-v2.svg"),
-    os.path.join(ASSETS_DIR, "inventory-v2.svg"),
-]:
-    if os.path.exists(obsolete):
-        os.remove(obsolete)
-
 # ---------------------------------------------------------------------------
 # PARSE PIXELTYPE.TTF BINARY TABLES (CMAP, HMTX, LOCA, GLYF)
 # ---------------------------------------------------------------------------
@@ -395,7 +387,7 @@ banner_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" 
     </rect>
   </g>
 
-  {px_text("[ PLAYER 1 // BUGGEDCODE410 ]", 190, 51, 2.0, "#7dcfff", "left", 1.0)}
+  {px_text("PLAYER 1 : BUGGEDCODE410", 190, 51, 2.0, "#7dcfff", "left", 1.0)}
   {px_text("LVL 20", 726, 51, 2.0, "#9ece6a", "right", 1.0)}
 
   {px_text("HARSHIL PABBISETTI", 504, 114, 5.0, "#0d0e17", "center", 3.0)}
@@ -408,7 +400,7 @@ banner_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" 
 
   <rect x="2" y="2" width="996" height="246" rx="8" fill="none" stroke="#292e42" stroke-width="4" shape-rendering="crispEdges" />
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "hero-banner.svg"), banner_svg)
+write_svg(os.path.join(ASSETS_DIR, "pixel-banner.svg"), banner_svg)
 
 
 # ---------------------------------------------------------------------------
@@ -430,14 +422,14 @@ write_svg(os.path.join(ASSETS_DIR, "pixel-divider-v2.svg"), divider_svg)
 
 
 # ---------------------------------------------------------------------------
-# 2. TYPING-BAR-V3.SVG (1000x68 ViewBox with Vertical Breathing Room)
+# 2. TYPING-STATUS.SVG (1000x68 ViewBox with Vertical Breathing Room)
 # ---------------------------------------------------------------------------
 typing_entries = [
     ("> UNDERGRADUATE @ BITS PILANI (2025 - PRESENT)", "#7dcfff"),
     ("> FRONTEND / SHOPIFY INTERN @ NOSH ELECTRONICS", "#9ece6a"),
     ("> BUILDING 2D GAME ENGINES, PYGAME RPGs & AI", "#bb9af7"),
     ("> CONSTRAINT SOLVING & ASYNC BACKEND SYSTEMS", "#e0af68"),
-    ("> GUILDS: CRUX BPHC  //  DADU  //  ACM CHAPTER", "#f7768e"),
+    ("> CLUBS: CRUX BPHC  |  DADU  |  ACM CHAPTER", "#f7768e"),
 ]
 
 line_groups = []
@@ -516,11 +508,11 @@ typing_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 68" w
   </g>
 {chr(10).join(line_groups)}
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "typing-bar-v3.svg"), typing_svg)
+write_svg(os.path.join(ASSETS_DIR, "typing-status.svg"), typing_svg)
 
 
 # ---------------------------------------------------------------------------
-# 3. PIXEL BADGES (3 Uniform 324x40 Badges — Factions Removed)
+# 3. PIXEL BADGES (3 Uniform 324x40 Badges)
 # ---------------------------------------------------------------------------
 def make_pixel_badge(filename: str, label: str, value: str, accent: str) -> None:
     width = 324
@@ -550,11 +542,9 @@ make_pixel_badge("repos.svg", "ARCHIVE", "GITHUB REPOS", "#9ece6a")
 
 
 # ---------------------------------------------------------------------------
-# 4. PIXEL SECTION HEADERS (1000x62 with Bottom Breathing Room)
+# 4. PIXEL SECTION HEADERS (Clean, Natural Titles — No 01. or // Subtitles)
 # ---------------------------------------------------------------------------
-def make_section_header(filename: str, tag: str, title: str, accent: str) -> None:
-    scale = 2.4
-    tag_w = measure_px(tag, scale, 1.2)
+def make_section_header(filename: str, title: str, right_tag: str, accent: str) -> None:
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 62" width="1000" height="62">
   <g shape-rendering="crispEdges">
     <rect x="2" y="6" width="996" height="40" fill="#16161e" stroke="#292e42" stroke-width="2" />
@@ -567,20 +557,20 @@ def make_section_header(filename: str, tag: str, title: str, accent: str) -> Non
     <rect x="944" y="23" width="16" height="6" fill="{accent}" fill-opacity="0.5" />
     <rect x="968" y="23" width="16" height="6" fill="{accent}" fill-opacity="0.2" />
   </g>
-  {px_text(tag, 42, 34, scale, accent, "left", 1.2)}
-  {px_text("//  " + title, 42 + tag_w + 16, 34, scale, "#c0caf5", "left", 1.2)}
+  {px_text(title, 42, 34, 2.4, accent, "left", 1.2)}
+  {px_text(right_tag, 902, 33, 2.0, "#787c99", "right", 0.8)}
 </svg>"""
     write_svg(os.path.join(HEADERS_DIR, filename), svg)
 
 
-make_section_header("header-about-v2.svg", "[ 01. PLAYER STATS ]", "CHARACTER SHEET & ACTIVE QUESTS", "#7aa2f7")
-make_section_header("header-tech-v2.svg", "[ 02. INVENTORY ]", "EQUIPPED LANGUAGES, ENGINES & TOOLS", "#9ece6a")
-make_section_header("header-quests-v2.svg", "[ 03. QUEST LOG ]", "FLAGSHIP GAME ENGINES & SYSTEMS BUILDS", "#bb9af7")
-make_section_header("header-snake-v2.svg", "[ 04. BONUS STAGE ]", "COMMIT GRID ARCADE SNAKE", "#f7768e")
+make_section_header("about-header.svg", "PLAYER STATS", "CHARACTER SHEET", "#7aa2f7")
+make_section_header("stack-header.svg", "TECH STACK", "LANGUAGES & TOOLS", "#9ece6a")
+make_section_header("projects-header.svg", "QUEST LOG", "SELECTED PROJECTS", "#bb9af7")
+make_section_header("snake-header.svg", "BONUS STAGE", "CONTRIBUTION SNAKE", "#f7768e")
 
 
 # ---------------------------------------------------------------------------
-# 5. CHARACTER-SHEET-V3.SVG (Spacious Layout + CTF Trophy + Pygame Domain)
+# 5. PLAYER-SHEET.SVG (Spacious Layout + CTF Trophy + Pygame Domain)
 # ---------------------------------------------------------------------------
 prompt_w = measure_px("> ", 2.0, 0.8)
 cmd_x = round(28 + prompt_w, 2)
@@ -634,21 +624,21 @@ about_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 288" w
     <animate attributeName="opacity" values="1;0;1" dur="1.0s" calcMode="discrete" repeatCount="indefinite" />
   </rect>
 
-  {px_text("QUEST FOCUS // ARCHITECTURE", 662, 36, 2.0, "#9ece6a", "left", 0.8)}
+  {px_text("WHAT I BUILD", 662, 36, 2.0, "#9ece6a", "left", 0.8)}
   {px_text("Procedural 2D worlds, A* enemy AI,", 642, 74, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("constraint solvers & modular web UI.", 642, 104, 2.0, "#a9b1d6", "left", 0.0)}
 
-  {px_text("SKILL TREES // CORE DOMAINS", 642, 178, 2.0, "#7aa2f7", "left", 1.0)}
+  {px_text("CORE AREAS", 642, 178, 2.0, "#7aa2f7", "left", 1.0)}
   {px_text("2D Game Engines", 722, 215, 2.0, "#9ece6a", "center", 0.0)}
   {px_text("Full-Stack Web", 896, 215, 2.0, "#7dcfff", "center", 0.0)}
   {px_text("Pygame", 722, 259, 2.0, "#bb9af7", "center", 0.0)}
   {px_text("CP-SAT & CTF", 896, 259, 2.0, "#e0af68", "center", 0.0)}
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "character-sheet-v3.svg"), about_svg)
+write_svg(os.path.join(ASSETS_DIR, "player-sheet.svg"), about_svg)
 
 
 # ---------------------------------------------------------------------------
-# 6. INVENTORY-V3.SVG (Spacious 3-Line Slots with Generous Padding)
+# 6. TECH-STACK.SVG (Spacious 3-Line Columns — No // Headers)
 # ---------------------------------------------------------------------------
 tech_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 164" width="1000" height="164">
   <g shape-rendering="crispEdges">
@@ -665,26 +655,26 @@ tech_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 164" wi
     <rect x="676" y="42" width="320" height="2" fill="#292e42" />
   </g>
 
-  {px_text("[ SLOT 1 // LANGUAGES ]", 24, 31, 2.0, "#7aa2f7", "left", 0.4)}
+  {px_text("LANGUAGES", 24, 31, 2.0, "#7aa2f7", "left", 0.6)}
   {px_text("* Python 3 & TypeScript", 24, 74, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* JavaScript (ES6+) & SQL", 24, 108, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* HTML5, CSS3 & Liquid", 24, 142, 2.0, "#c0caf5", "left", 0.0)}
 
-  {px_text("[ SLOT 2 // GAME & GFX ]", 360, 31, 2.0, "#9ece6a", "left", 0.4)}
+  {px_text("GAME DEV & GRAPHICS", 360, 31, 2.0, "#9ece6a", "left", 0.6)}
   {px_text("* Pygame (2D Game Loops)", 360, 74, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* Tiled Map Editor & PyTMX", 360, 108, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* A* FSM, BSP & Raycasting", 360, 142, 2.0, "#c0caf5", "left", 0.0)}
 
-  {px_text("[ SLOT 3 // SYSTEMS & WEB ]", 696, 31, 2.0, "#bb9af7", "left", 0.4)}
+  {px_text("BACKEND & WEB", 696, 31, 2.0, "#bb9af7", "left", 0.6)}
   {px_text("* FastAPI & React 18 + Vite", 696, 74, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* Google OR-Tools (CP-SAT)", 696, 108, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* Docker, PostgreSQL & Git", 696, 142, 2.0, "#c0caf5", "left", 0.0)}
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "inventory-v3.svg"), tech_svg)
+write_svg(os.path.join(ASSETS_DIR, "tech-stack.svg"), tech_svg)
 
 
 # ---------------------------------------------------------------------------
-# 7. FOUR FLAGSHIP PROJECT QUEST CARDS (2x2 Grid, 2-Line Summary + 3 Tags)
+# 7. FOUR PROJECT QUEST CARDS (2x2 Grid, 2-Line Summary + 3 Tags)
 # ---------------------------------------------------------------------------
 def make_quest_card(
     filename: str,
@@ -737,7 +727,7 @@ def make_quest_card(
 
 
 make_quest_card(
-    "flagship-agent-showdown.svg",
+    "agent-showdown-card.svg",
     "Agent Showdown Arena",
     "CRUX BPHC",
     "#bb9af7",
@@ -748,18 +738,18 @@ make_quest_card(
 )
 
 make_quest_card(
-    "flagship-nosh-storefront.svg",
+    "nosh-storefront-card.svg",
     "NOSH One US Storefront",
     "INTERNSHIP",
     "#7dcfff",
     "#7aa2f7",
-    "Modular Shopify OS 2.0 storefront & custom",
-    "Web Components built across 60+ Figma specs.",
+    "Shopify OS 2.0 theme sections & custom JS",
+    "Web Components built across 60+ files.",
     ["Shopify 2.0", "Liquid", "Web Components"],
 )
 
 make_quest_card(
-    "flagship-dungeon-crawler.svg",
+    "dungeon-crawler-card.svg",
     "Dungeon Crawler Stealth",
     "STEALTH AI",
     "#7aa2f7",
@@ -770,7 +760,7 @@ make_quest_card(
 )
 
 make_quest_card(
-    "flagship-sprout-valley.svg",
+    "sprout-valley-card.svg",
     "Sprout Valley: 2D RPG",
     "2D ENGINE",
     "#9ece6a",
@@ -782,7 +772,7 @@ make_quest_card(
 
 
 # ---------------------------------------------------------------------------
-# 8. FOOTER-ARCADE.SVG ("CONTINUE? // INSERT COIN TO COLLABORATE" Banner)
+# 8. ARCADE-FOOTER.SVG ("CONTINUE? 9... 8... 7... [ INSERT COIN ]" Banner)
 # ---------------------------------------------------------------------------
 footer_sub = "> EXPLORE REPOSITORIES  |  OPEN AN ISSUE  |  STAR A QUEST  |  @BUGGEDCODE410"
 footer_sub_w = measure_px(footer_sub, 2.0, 0.6)
@@ -818,23 +808,23 @@ footer_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 88" w
     </g>
   </g>
 
-  {px_text("[ CONTINUE?  9... 8... 7...  //  INSERT COIN TO COLLABORATE ]", 500, 38, 2.3, "#e0af68", "center", 1.0)}
+  {px_text("CONTINUE?  9... 8... 7...   [ INSERT COIN TO COLLABORATE ]", 500, 38, 2.3, "#e0af68", "center", 1.0)}
   {px_text(footer_sub, 500, 66, 2.0, "#7dcfff", "center", 0.6)}
   <rect x="{footer_cursor_x}" y="52" width="8" height="14" fill="#9ece6a" shape-rendering="crispEdges">
     <animate attributeName="opacity" values="1;0;1" dur="1.0s" calcMode="discrete" repeatCount="indefinite" />
   </rect>
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "footer-arcade.svg"), footer_svg)
+write_svg(os.path.join(ASSETS_DIR, "arcade-footer.svg"), footer_svg)
 
 
 # ---------------------------------------------------------------------------
-# 9. WRITE SPACIOUS, DECLUTTERED README.MD WITH ARCADE FOOTER
+# 9. WRITE README.MD
 # ---------------------------------------------------------------------------
 readme_md = """<div align="center">
 
-<img width="100%" src="./assets/hero-banner.svg" alt="Harshil Pabbisetti — Game Engines, Backend Systems & Full-Stack Web" />
+<img width="100%" src="./assets/pixel-banner.svg" alt="Harshil Pabbisetti — Game Engines, Backend Systems & Full-Stack Web" />
 
-<img width="100%" src="./assets/typing-bar-v3.svg" alt="Animated Pixel Typing Status" />
+<img width="100%" src="./assets/typing-status.svg" alt="Animated Pixel Typing Status" />
 
 <p align="center">
   <a href="https://github.com/BuggedCode410"><img width="32%" src="./assets/badges/campus.svg" alt="Campus: BITS Pilani" /></a>
@@ -847,15 +837,15 @@ readme_md = """<div align="center">
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
 
 <div align="center">
-  <img width="100%" src="./assets/headers/header-about-v2.svg" alt="01. Player Stats // Character Sheet & Active Quests" />
-  <img width="100%" src="./assets/character-sheet-v3.svg" alt="About Harshil Pabbisetti" />
+  <img width="100%" src="./assets/headers/about-header.svg" alt="Player Stats" />
+  <img width="100%" src="./assets/player-sheet.svg" alt="About Harshil Pabbisetti" />
 </div>
 
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
 
 <div align="center">
-  <img width="100%" src="./assets/headers/header-tech-v2.svg" alt="02. Inventory // Equipped Languages, Engines & Tools" />
-  <img width="100%" src="./assets/inventory-v3.svg" alt="Tech Stack Inventory" />
+  <img width="100%" src="./assets/headers/stack-header.svg" alt="Tech Stack" />
+  <img width="100%" src="./assets/tech-stack.svg" alt="Tech Stack" />
   <br/><br/>
   <img src="https://skillicons.dev/icons?i=py,ts,js,html,css,react,vite,fastapi,postgres,mysql,docker,git,github,vscode,figma&theme=dark" alt="Tech Stack Icons" />
 </div>
@@ -863,21 +853,21 @@ readme_md = """<div align="center">
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
 
 <div align="center">
-  <img width="100%" src="./assets/headers/header-quests-v2.svg" alt="03. Quest Log // Flagship Game Engines & Systems Builds" />
+  <img width="100%" src="./assets/headers/projects-header.svg" alt="Quest Log" />
   <p align="center">
-    <a href="https://github.com/crux-bphc/agent-showdown"><img width="49%" src="./assets/projects/flagship-agent-showdown.svg" alt="Agent Showdown AI Arena" /></a>
-    <a href="https://github.com/madhav336/nosh-theme"><img width="49%" src="./assets/projects/flagship-nosh-storefront.svg" alt="NOSH One US Storefront" /></a>
+    <a href="https://github.com/crux-bphc/agent-showdown"><img width="49%" src="./assets/projects/agent-showdown-card.svg" alt="Agent Showdown AI Arena" /></a>
+    <a href="https://github.com/madhav336/nosh-theme"><img width="49%" src="./assets/projects/nosh-storefront-card.svg" alt="NOSH One US Storefront" /></a>
   </p>
   <p align="center">
-    <a href="https://github.com/BuggedCode410/Dungeon-Crawler"><img width="49%" src="./assets/projects/flagship-dungeon-crawler.svg" alt="Dungeon Crawler Stealth Game" /></a>
-    <a href="https://github.com/BuggedCode410/stardrew_valley"><img width="49%" src="./assets/projects/flagship-sprout-valley.svg" alt="Sprout Valley 2D RPG" /></a>
+    <a href="https://github.com/BuggedCode410/Dungeon-Crawler"><img width="49%" src="./assets/projects/dungeon-crawler-card.svg" alt="Dungeon Crawler Stealth Game" /></a>
+    <a href="https://github.com/BuggedCode410/stardrew_valley"><img width="49%" src="./assets/projects/sprout-valley-card.svg" alt="Sprout Valley 2D RPG" /></a>
   </p>
 </div>
 
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
 
 <div align="center">
-  <img width="100%" src="./assets/headers/header-snake-v2.svg" alt="04. Bonus Stage // Commit Grid Arcade Snake" />
+  <img width="100%" src="./assets/headers/snake-header.svg" alt="Bonus Stage — Contribution Snake" />
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BuggedCode410/BuggedCode410/output/github-contribution-grid-snake-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BuggedCode410/BuggedCode410/output/github-contribution-grid-snake.svg" />
@@ -888,7 +878,7 @@ readme_md = """<div align="center">
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
 
 <div align="center">
-  <a href="https://github.com/BuggedCode410?tab=repositories"><img width="100%" src="./assets/footer-arcade.svg" alt="Continue? // Insert Coin to Collaborate" /></a>
+  <a href="https://github.com/BuggedCode410?tab=repositories"><img width="100%" src="./assets/arcade-footer.svg" alt="Continue? Insert Coin to Collaborate" /></a>
 </div>
 """
 write_svg(os.path.join(REPO_DIR, "README.md"), readme_md)
