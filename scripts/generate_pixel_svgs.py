@@ -13,6 +13,14 @@ os.makedirs(PROJECTS_DIR, exist_ok=True)
 os.makedirs(HEADERS_DIR, exist_ok=True)
 os.makedirs(BADGES_DIR, exist_ok=True)
 
+for obsolete in [
+    os.path.join(ASSETS_DIR, "typing-bar-v2.svg"),
+    os.path.join(ASSETS_DIR, "character-sheet-v2.svg"),
+    os.path.join(ASSETS_DIR, "inventory-v2.svg"),
+]:
+    if os.path.exists(obsolete):
+        os.remove(obsolete)
+
 # ---------------------------------------------------------------------------
 # PARSE PIXELTYPE.TTF BINARY TABLES (CMAP, HMTX, LOCA, GLYF)
 # ---------------------------------------------------------------------------
@@ -422,12 +430,12 @@ write_svg(os.path.join(ASSETS_DIR, "pixel-divider-v2.svg"), divider_svg)
 
 
 # ---------------------------------------------------------------------------
-# 2. TYPING-BAR-V2.SVG (1000x68 ViewBox with Vertical Breathing Room)
+# 2. TYPING-BAR-V3.SVG (1000x68 ViewBox with Vertical Breathing Room)
 # ---------------------------------------------------------------------------
 typing_entries = [
     ("> UNDERGRADUATE @ BITS PILANI (2025 - PRESENT)", "#7dcfff"),
     ("> FRONTEND / SHOPIFY INTERN @ NOSH ELECTRONICS", "#9ece6a"),
-    ("> BUILDING 2D GAME ENGINES, C++20 ARENAS & WASM", "#bb9af7"),
+    ("> BUILDING 2D GAME ENGINES, PYGAME RPGs & AI", "#bb9af7"),
     ("> CONSTRAINT SOLVING & ASYNC BACKEND SYSTEMS", "#e0af68"),
     ("> GUILDS: CRUX BPHC  //  DADU  //  ACM CHAPTER", "#f7768e"),
 ]
@@ -508,7 +516,7 @@ typing_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 68" w
   </g>
 {chr(10).join(line_groups)}
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "typing-bar-v2.svg"), typing_svg)
+write_svg(os.path.join(ASSETS_DIR, "typing-bar-v3.svg"), typing_svg)
 
 
 # ---------------------------------------------------------------------------
@@ -572,7 +580,7 @@ make_section_header("header-snake-v2.svg", "[ 04. BONUS STAGE ]", "COMMIT GRID A
 
 
 # ---------------------------------------------------------------------------
-# 5. CHARACTER-SHEET-V2.SVG (Spacious Layout + CTF Trophy Folded In)
+# 5. CHARACTER-SHEET-V3.SVG (Spacious Layout + CTF Trophy + Pygame Domain)
 # ---------------------------------------------------------------------------
 prompt_w = measure_px("> ", 2.0, 0.8)
 cmd_x = round(28 + prompt_w, 2)
@@ -618,7 +626,7 @@ about_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 288" w
   {px_text("CRUX BPHC  |  DADU  |  ACM Chapter", 172, 182, 2.0, "#7dcfff", "left", 0.6)}
 
   {px_text("TROPHIES   :", 28, 216, 2.0, "#bb9af7", "left", 0.6)}
-  {px_text("Z0d1ak CTF Best Writeup | 1st Hackathon", 172, 216, 2.0, "#e0af68", "left", 0.4)}
+  {px_text("Z0d1ak CTF Best Writeup", 172, 216, 2.0, "#e0af68", "left", 0.6)}
 
   {px_text(">", 28, 256, 2.0, "#7aa2f7", "left", 0.8)}
   {px_text("status --ready-for-quests", cmd_x, 256, 2.0, "#a9b1d6", "left", 0.8)}
@@ -626,21 +634,21 @@ about_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 288" w
     <animate attributeName="opacity" values="1;0;1" dur="1.0s" calcMode="discrete" repeatCount="indefinite" />
   </rect>
 
-  {px_text("CURRENTLY BUILDING", 662, 36, 2.0, "#9ece6a", "left", 1.0)}
-  {px_text("NOSH One Storefront & 2D Engines", 642, 74, 2.0, "#c0caf5", "left", 0.0)}
-  {px_text("Shopify 2.0 Web Components & Wasm", 642, 104, 2.0, "#a9b1d6", "left", 0.0)}
+  {px_text("QUEST FOCUS // ARCHITECTURE", 662, 36, 2.0, "#9ece6a", "left", 0.8)}
+  {px_text("Procedural 2D worlds, A* enemy AI,", 642, 74, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("constraint solvers & modular web UI.", 642, 104, 2.0, "#a9b1d6", "left", 0.0)}
 
   {px_text("SKILL TREES // CORE DOMAINS", 642, 178, 2.0, "#7aa2f7", "left", 1.0)}
   {px_text("2D Game Engines", 722, 215, 2.0, "#9ece6a", "center", 0.0)}
   {px_text("Full-Stack Web", 896, 215, 2.0, "#7dcfff", "center", 0.0)}
-  {px_text("C++20 & Wasm", 722, 259, 2.0, "#bb9af7", "center", 0.0)}
+  {px_text("Pygame", 722, 259, 2.0, "#bb9af7", "center", 0.0)}
   {px_text("CP-SAT & CTF", 896, 259, 2.0, "#e0af68", "center", 0.0)}
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "character-sheet-v2.svg"), about_svg)
+write_svg(os.path.join(ASSETS_DIR, "character-sheet-v3.svg"), about_svg)
 
 
 # ---------------------------------------------------------------------------
-# 6. INVENTORY-V2.SVG (Spacious 3-Line Slots with Generous Padding)
+# 6. INVENTORY-V3.SVG (Spacious 3-Line Slots with Generous Padding)
 # ---------------------------------------------------------------------------
 tech_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 164" width="1000" height="164">
   <g shape-rendering="crispEdges">
@@ -658,21 +666,21 @@ tech_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 164" wi
   </g>
 
   {px_text("[ SLOT 1 // LANGUAGES ]", 24, 31, 2.0, "#7aa2f7", "left", 0.4)}
-  {px_text("* Python 3  &  C++20", 24, 74, 2.0, "#c0caf5", "left", 0.0)}
-  {px_text("* TypeScript & JavaScript", 24, 108, 2.0, "#c0caf5", "left", 0.0)}
-  {px_text("* SQL, HTML5, CSS3 & Liquid", 24, 142, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* Python 3 & TypeScript", 24, 74, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* JavaScript (ES6+) & SQL", 24, 108, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* HTML5, CSS3 & Liquid", 24, 142, 2.0, "#c0caf5", "left", 0.0)}
 
   {px_text("[ SLOT 2 // GAME & GFX ]", 360, 31, 2.0, "#9ece6a", "left", 0.4)}
-  {px_text("* Pygame & Raylib (60 FPS)", 360, 74, 2.0, "#c0caf5", "left", 0.0)}
-  {px_text("* WebAssembly (Emscripten)", 360, 108, 2.0, "#c0caf5", "left", 0.0)}
-  {px_text("* Tiled, PyTMX & A* / BSP AI", 360, 142, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* Pygame (2D Game Loops)", 360, 74, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* Tiled Map Editor & PyTMX", 360, 108, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* A* FSM, BSP & Raycasting", 360, 142, 2.0, "#c0caf5", "left", 0.0)}
 
   {px_text("[ SLOT 3 // SYSTEMS & WEB ]", 696, 31, 2.0, "#bb9af7", "left", 0.4)}
   {px_text("* FastAPI & React 18 + Vite", 696, 74, 2.0, "#c0caf5", "left", 0.0)}
   {px_text("* Google OR-Tools (CP-SAT)", 696, 108, 2.0, "#c0caf5", "left", 0.0)}
-  {px_text("* Docker, IOI Isolate & Git", 696, 142, 2.0, "#c0caf5", "left", 0.0)}
+  {px_text("* Docker, PostgreSQL & Git", 696, 142, 2.0, "#c0caf5", "left", 0.0)}
 </svg>"""
-write_svg(os.path.join(ASSETS_DIR, "inventory-v2.svg"), tech_svg)
+write_svg(os.path.join(ASSETS_DIR, "inventory-v3.svg"), tech_svg)
 
 
 # ---------------------------------------------------------------------------
@@ -826,7 +834,7 @@ readme_md = """<div align="center">
 
 <img width="100%" src="./assets/hero-banner.svg" alt="Harshil Pabbisetti — Game Engines, Backend Systems & Full-Stack Web" />
 
-<img width="100%" src="./assets/typing-bar-v2.svg" alt="Animated Pixel Typing Status" />
+<img width="100%" src="./assets/typing-bar-v3.svg" alt="Animated Pixel Typing Status" />
 
 <p align="center">
   <a href="https://github.com/BuggedCode410"><img width="32%" src="./assets/badges/campus.svg" alt="Campus: BITS Pilani" /></a>
@@ -840,16 +848,16 @@ readme_md = """<div align="center">
 
 <div align="center">
   <img width="100%" src="./assets/headers/header-about-v2.svg" alt="01. Player Stats // Character Sheet & Active Quests" />
-  <img width="100%" src="./assets/character-sheet-v2.svg" alt="About Harshil Pabbisetti" />
+  <img width="100%" src="./assets/character-sheet-v3.svg" alt="About Harshil Pabbisetti" />
 </div>
 
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
 
 <div align="center">
   <img width="100%" src="./assets/headers/header-tech-v2.svg" alt="02. Inventory // Equipped Languages, Engines & Tools" />
-  <img width="100%" src="./assets/inventory-v2.svg" alt="Tech Stack Inventory" />
+  <img width="100%" src="./assets/inventory-v3.svg" alt="Tech Stack Inventory" />
   <br/><br/>
-  <img src="https://skillicons.dev/icons?i=py,cpp,ts,js,react,vite,fastapi,postgres,mysql,docker,wasm,git,github,vscode,figma&theme=dark" alt="Tech Stack Icons" />
+  <img src="https://skillicons.dev/icons?i=py,ts,js,html,css,react,vite,fastapi,postgres,mysql,docker,git,github,vscode,figma&theme=dark" alt="Tech Stack Icons" />
 </div>
 
 <img width="100%" src="./assets/pixel-divider-v2.svg" alt="" />
