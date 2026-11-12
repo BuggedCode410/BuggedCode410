@@ -1,0 +1,52 @@
+name: Change Palette
+
+on:
+  workflow_dispatch:
+    inputs:
+      palette:
+        description: "Color palette for the profile"
+        type: choice
+        required: true
+        default: ember
+        options:
+          - original
+          - ember
+          - sunset
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  recolor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate SVGs with the chosen palette
+        run: python3 scripts/generate_pixel_svgs.py --palette "${{ inputs.palette }}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A assets README.md scripts/palette.txt
+          if git diff --cached --quiet; then
+            echo "Already using the '${{ inputs.palette }}' palette."
+          else
+            git commit -m "style: switch profile palette to ${{ inputs.palette }}"
+            git push
+          fi
+
+      # Pushes made with GITHUB_TOKEN don't trigger other workflows,
+      # so start the snake workflow directly to recolor the snake.
+      - name: Recolor the contribution snake
+        run: gh workflow run snake.yml --ref "${{ github.ref_name }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

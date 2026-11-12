@@ -1,5 +1,24 @@
+import argparse
 import os
+import re
 import struct
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import palettes  # noqa: E402
+
+_parser = argparse.ArgumentParser(description="Regenerate the profile SVGs and README.")
+_parser.add_argument(
+    "--palette",
+    choices=list(palettes.PALETTES),
+    help="color palette to use (saved to scripts/palette.txt for next time)",
+)
+_args = _parser.parse_args()
+PALETTE_NAME = _args.palette or palettes.read_active()
+PALETTE = palettes.get(PALETTE_NAME)
+if _args.palette:
+    palettes.write_active(PALETTE_NAME)
+_HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(REPO_DIR, "assets")
@@ -191,6 +210,8 @@ def px_text(
 
 
 def write_svg(path: str, content: str) -> None:
+    if PALETTE and path.endswith(".svg"):
+        content = _HEX.sub(lambda m: PALETTE.get(m.group(0).lower(), m.group(0)), content)
     with open(path, "w", encoding="utf-8") as f:
         f.write(content.strip() + "\n")
 
@@ -882,4 +903,4 @@ readme_md = """<div align="center">
 </div>
 """
 write_svg(os.path.join(REPO_DIR, "README.md"), readme_md)
-print("Successfully regenerated all SVGs and README.md!")
+print(f"Successfully regenerated all SVGs and README.md with the '{PALETTE_NAME}' palette!")
