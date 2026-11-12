@@ -1,3 +1,4 @@
+<!-- Generated from profile.toml. Edit that file, not this one. -->
 <div align="center">
 
 <img width="100%" src="./assets/pixel-banner.svg" alt="Harshil Pabbisetti — Game Engines, Backend Systems & Full-Stack Web" />

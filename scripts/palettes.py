@@ -4,7 +4,7 @@ The generator draws everything in the base (Tokyo Night) colors. When a
 palette other than "original" is active, every base color is swapped for its
 counterpart below as each SVG is written.
 
-Switch palettes:
+Switch palettes (the words themselves live in profile.toml):
     python3 scripts/generate_pixel_svgs.py --palette ember
 or edit scripts/palette.txt and rerun the generator. On GitHub, use
 Actions -> "Change Palette" -> Run workflow.

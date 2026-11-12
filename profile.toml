@@ -1,0 +1,214 @@
+# =============================================================================
+#  PROFILE CONTENT: every word on the GitHub profile lives in this file.
+# =============================================================================
+#
+#  How to edit:
+#    1. Change any text below (on github.com: click the pencil icon).
+#    2. Commit to main. A GitHub Action redraws the pixel SVGs and README.md.
+#       Locally you can run:  python3 scripts/generate_pixel_svgs.py
+#
+#  Don't edit README.md or the SVGs in assets/ directly; they get overwritten.
+#
+#  Colors are names, not hex codes. Use one of:
+#    cyan  blue  purple  green  pink  yellow  text  muted
+#  The palette (original / ember / sunset) decides what each name looks like.
+#
+#  Space is limited. Text that's too long for its box shrinks to fit, and the
+#  generator prints a warning when it has to shrink a lot. Shorter is better.
+# =============================================================================
+
+[profile]
+username = "BuggedCode410"          # used for links and the contribution snake
+
+
+# --- Top banner -------------------------------------------------------------
+[banner]
+player_tag = "PLAYER 1 : BUGGEDCODE410"
+level      = "LVL 20"
+name       = "HARSHIL PABBISETTI"
+subtitle   = "> GAME ENGINES  |  BACKEND SYSTEMS  |  FULL-STACK WEB"
+alt        = "Harshil Pabbisetti — Game Engines, Backend Systems & Full-Stack Web"
+
+
+# --- Typing lines under the banner (types out one at a time, any number) ----
+[[typing]]
+text  = "> UNDERGRADUATE @ BITS PILANI (2025 - PRESENT)"
+color = "cyan"
+
+[[typing]]
+text  = "> FRONTEND / SHOPIFY INTERN @ NOSH ELECTRONICS"
+color = "green"
+
+[[typing]]
+text  = "> BUILDING 2D GAME ENGINES, PYGAME RPGs & AI"
+color = "purple"
+
+[[typing]]
+text  = "> CONSTRAINT SOLVING & ASYNC BACKEND SYSTEMS"
+color = "yellow"
+
+[[typing]]
+text  = "> CLUBS: CRUX BPHC  |  DADU  |  ACM CHAPTER"
+color = "pink"
+
+
+# --- Three badges under the typing line -------------------------------------
+[[badges]]
+file  = "campus.svg"
+label = "CAMPUS"
+value = "BITS PILANI"
+color = "purple"
+link  = "https://github.com/BuggedCode410"
+alt   = "Campus: BITS Pilani"
+
+[[badges]]
+file  = "internship.svg"
+label = "QUEST"
+value = "INTERN @ NOSH"
+color = "blue"
+link  = "https://github.com/madhav336/nosh-theme"
+alt   = "Quest: Intern @ NOSH"
+
+[[badges]]
+file  = "repos.svg"
+label = "ARCHIVE"
+value = "GITHUB REPOS"
+color = "green"
+link  = "https://github.com/BuggedCode410?tab=repositories"
+alt   = "Archive: GitHub Repos"
+
+
+# --- Section headers --------------------------------------------------------
+[headers.about]
+title = "PLAYER STATS"
+tag   = "CHARACTER SHEET"
+color = "blue"
+alt   = "Player Stats"
+
+[headers.stack]
+title = "TECH STACK"
+tag   = "LANGUAGES & TOOLS"
+color = "green"
+alt   = "Tech Stack"
+
+[headers.projects]
+title = "QUEST LOG"
+tag   = "SELECTED PROJECTS"
+color = "purple"
+alt   = "Quest Log"
+
+[headers.snake]
+title = "BONUS STAGE"
+tag   = "CONTRIBUTION SNAKE"
+color = "pink"
+alt   = "Bonus Stage — Contribution Snake"
+
+
+# --- Player sheet (the terminal window + two side panels) -------------------
+[player_sheet]
+alt            = "About Harshil Pabbisetti"
+window_title   = "harshil@bits-pilani: ~/character_sheet.cfg"
+command        = "cat player_stats.yaml"
+status_command = "status --ready-for-quests"
+
+# Up to 4 rows. Labels: 11 characters max.
+rows = [
+  { label = "EDUCATION",  value = "B.E. @ BITS Pilani (2025 - Present)", color = "text" },
+  { label = "MAIN QUEST", value = "Frontend / Shopify Intern @ NOSH",    color = "green" },
+  { label = "GUILDS",     value = "CRUX BPHC  |  DADU  |  ACM Chapter",  color = "cyan" },
+  { label = "TROPHIES",   value = "Z0d1ak CTF Best Writeup",             color = "yellow" },
+]
+
+build_title = "WHAT I BUILD"
+build_lines = [
+  "Procedural 2D worlds, A* enemy AI,",
+  "constraint solvers & modular web UI.",
+]
+
+core_title = "CORE AREAS"
+# Exactly 4 boxes.
+core_areas = [
+  { label = "2D Game Engines", color = "green" },
+  { label = "Full-Stack Web",  color = "cyan" },
+  { label = "Pygame",          color = "purple" },
+  { label = "CP-SAT & CTF",    color = "yellow" },
+]
+
+
+# --- Tech stack (3 columns, 3 items each) -----------------------------------
+[[tech_stack]]
+title = "LANGUAGES"
+color = "blue"
+items = ["Python 3 & TypeScript", "JavaScript (ES6+) & SQL", "HTML5, CSS3 & Liquid"]
+
+[[tech_stack]]
+title = "GAME DEV & GRAPHICS"
+color = "green"
+items = ["Pygame (2D Game Loops)", "Tiled Map Editor & PyTMX", "A* FSM, BSP & Raycasting"]
+
+[[tech_stack]]
+title = "BACKEND & WEB"
+color = "purple"
+items = ["FastAPI & React 18 + Vite", "Google OR-Tools (CP-SAT)", "Docker, PostgreSQL & Git"]
+
+# Icon row under the tech stack. Names from https://skillicons.dev
+[skill_icons]
+icons = ["py", "ts", "js", "html", "css", "react", "vite", "fastapi", "postgres", "mysql", "docker", "git", "github", "vscode", "figma"]
+
+
+# --- Project cards (shown 2 per row, any number) ----------------------------
+[[projects]]
+file    = "agent-showdown-card.svg"
+title   = "Agent Showdown Arena"
+badge   = "CRUX BPHC"
+accent1 = "purple"
+accent2 = "pink"
+line1   = "4-player territory game engine in IOI Isolate"
+line2   = "with a 60 FPS Raylib & Wasm replay viewer."
+tags    = ["C++20", "Raylib", "WebAssembly"]   # up to 3
+link    = "https://github.com/crux-bphc/agent-showdown"
+alt     = "Agent Showdown AI Arena"
+
+[[projects]]
+file    = "nosh-storefront-card.svg"
+title   = "NOSH One US Storefront"
+badge   = "INTERNSHIP"
+accent1 = "cyan"
+accent2 = "blue"
+line1   = "Shopify OS 2.0 theme sections & custom JS"
+line2   = "Web Components built across 60+ files."
+tags    = ["Shopify 2.0", "Liquid", "Web Components"]
+link    = "https://github.com/madhav336/nosh-theme"
+alt     = "NOSH One US Storefront"
+
+[[projects]]
+file    = "dungeon-crawler-card.svg"
+title   = "Dungeon Crawler Stealth"
+badge   = "STEALTH AI"
+accent1 = "blue"
+accent2 = "purple"
+line1   = "Procedural BSP dungeon crawler with A* enemy"
+line2   = "FSM pathfinding & 2D shadow raycasting."
+tags    = ["Python", "Pygame", "A* Search"]
+link    = "https://github.com/BuggedCode410/Dungeon-Crawler"
+alt     = "Dungeon Crawler Stealth Game"
+
+[[projects]]
+file    = "sprout-valley-card.svg"
+title   = "Sprout Valley: 2D RPG"
+badge   = "2D ENGINE"
+accent1 = "green"
+accent2 = "cyan"
+line1   = "2D pixel RPG with farming, dynamic weather,"
+line2   = "merchant trading & Y-sorted PyTMX tilemaps."
+tags    = ["Python", "Pygame", "Tiled / PyTMX"]
+link    = "https://github.com/BuggedCode410/stardrew_valley"
+alt     = "Sprout Valley 2D RPG"
+
+
+# --- Footer -----------------------------------------------------------------
+[footer]
+headline = "CONTINUE?  9... 8... 7...   [ INSERT COIN TO COLLABORATE ]"
+subline  = "> EXPLORE REPOSITORIES  |  OPEN AN ISSUE  |  STAR A QUEST  |  @BUGGEDCODE410"
+link     = "https://github.com/BuggedCode410?tab=repositories"
+alt      = "Continue? Insert Coin to Collaborate"
