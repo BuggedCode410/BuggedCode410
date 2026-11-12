@@ -806,43 +806,46 @@ for _p in C["projects"]:
 # 8. ARCADE-FOOTER.SVG ("CONTINUE? 9... 8... 7... [ INSERT COIN ]" Banner)
 # ---------------------------------------------------------------------------
 footer_sub = C["footer"]["subline"]
-FOOTER_SUB_MAX = 860
+FOOTER_SUB_MAX = 840  # keeps text clear of the coins (x 32-52 and 948-968)
 footer_sub_w = fit_px(footer_sub, 2.0, 0.6, FOOTER_SUB_MAX)[2]
 footer_cursor_x = int(round(500 + footer_sub_w / 2.0 + 6))
 
-footer_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 88" width="1000" height="88">
+# Vertical layout (viewBox 1000x100): panel y 6-94, accent bar 6-10, base line 90-92.
+# Headline caps span y 28-44, subline caps y 60-74, so both gaps to the panel
+# edges are 18px and the coins are centered on the text block (y 51).
+footer_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" width="1000" height="100">
   <g shape-rendering="crispEdges">
-    <rect x="2" y="6" width="996" height="76" fill="#16161e" stroke="#2f3549" stroke-width="2" />
+    <rect x="2" y="6" width="996" height="88" fill="#16161e" stroke="#2f3549" stroke-width="2" />
     <rect x="2" y="6" width="996" height="4" fill="#bb9af7" />
     <rect x="500" y="6" width="498" height="4" fill="#7dcfff" />
-    <rect x="2" y="80" width="996" height="2" fill="#292e42" />
+    <rect x="2" y="90" width="996" height="2" fill="#292e42" />
 
     <!-- Corner Pixel Rivets -->
     <rect x="10" y="16" width="4" height="4" fill="#bb9af7" />
     <rect x="986" y="16" width="4" height="4" fill="#7dcfff" />
-    <rect x="10" y="70" width="4" height="4" fill="#bb9af7" />
-    <rect x="986" y="70" width="4" height="4" fill="#7dcfff" />
+    <rect x="10" y="80" width="4" height="4" fill="#bb9af7" />
+    <rect x="986" y="80" width="4" height="4" fill="#7dcfff" />
 
     <!-- Left Animated 8-Bit Gold Coin -->
     <g>
       <animate attributeName="opacity" values="1;0.45;1" dur="1.2s" calcMode="discrete" repeatCount="indefinite" />
-      <rect x="36" y="28" width="12" height="24" fill="#e0af68" />
-      <rect x="32" y="32" width="20" height="16" fill="#e0af68" />
-      <rect x="40" y="34" width="4" height="12" fill="#16161e" />
+      <rect x="36" y="39" width="12" height="24" fill="#e0af68" />
+      <rect x="32" y="43" width="20" height="16" fill="#e0af68" />
+      <rect x="40" y="45" width="4" height="12" fill="#16161e" />
     </g>
 
     <!-- Right Animated 8-Bit Gold Coin -->
     <g>
       <animate attributeName="opacity" values="1;0.45;1" dur="1.2s" calcMode="discrete" repeatCount="indefinite" />
-      <rect x="952" y="28" width="12" height="24" fill="#e0af68" />
-      <rect x="948" y="32" width="20" height="16" fill="#e0af68" />
-      <rect x="956" y="34" width="4" height="12" fill="#16161e" />
+      <rect x="952" y="39" width="12" height="24" fill="#e0af68" />
+      <rect x="948" y="43" width="20" height="16" fill="#e0af68" />
+      <rect x="956" y="45" width="4" height="12" fill="#16161e" />
     </g>
   </g>
 
-  {px_text(C["footer"]["headline"], 500, 38, 2.3, "#e0af68", "center", 1.0, 880)}
-  {px_text(footer_sub, 500, 66, 2.0, "#7dcfff", "center", 0.6, FOOTER_SUB_MAX)}
-  <rect x="{footer_cursor_x}" y="52" width="8" height="14" fill="#9ece6a" shape-rendering="crispEdges">
+  {px_text(C["footer"]["headline"], 500, 44, 2.3, "#e0af68", "center", 1.0, 840)}
+  {px_text(footer_sub, 500, 74, 2.0, "#7dcfff", "center", 0.6, FOOTER_SUB_MAX)}
+  <rect x="{footer_cursor_x}" y="60" width="8" height="14" fill="#9ece6a" shape-rendering="crispEdges">
     <animate attributeName="opacity" values="1;0;1" dur="1.0s" calcMode="discrete" repeatCount="indefinite" />
   </rect>
 </svg>"""
